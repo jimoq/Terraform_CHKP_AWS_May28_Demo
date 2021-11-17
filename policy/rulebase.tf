@@ -8,7 +8,7 @@
                 enabled = true
                 name = "Jump Host Rule"
                 source = [ checkpoint_management_dns_domain.jumphost.name ]
-                destination = "Any"
+                destination = [ "Any" ]
                 service = ["ssh", "https"]
                 action = "Accept"
                 layer = "${checkpoint_management_package.AWS_AutoScale.name} Network"
@@ -30,7 +30,7 @@
                 destination = [checkpoint_management_network.vpc_local.name]
                 destination_negate = false
                 source = [checkpoint_management_network.vpc_local.name]
-                service = "Any"
+                service = [ "Any" ]
                 enabled = true
                 action = "Accept"
                 layer = "${checkpoint_management_package.AWS_AutoScale.name} Network"
@@ -51,8 +51,8 @@
            resource "checkpoint_management_access_rule" "rule3" {
                 name = "Internet Access"
                 source = [checkpoint_management_network.vpc_local.name]
-                destination = "Any"
-                service = "Any"
+                destination = [ "Any" ]
+                service = [ "Any" ]
                 enabled = true
                 action = "Accept"
                 layer = "${checkpoint_management_package.AWS_AutoScale.name} Network"
@@ -72,7 +72,7 @@
 
           resource "checkpoint_management_access_rule" "rule4" {
                 name = "Inbound Access"
-                source = "Any"
+                source = [ "Any" ]
                 destination = [checkpoint_management_dynamic_object.localgatewayexternal.name]
                 service = [ checkpoint_management_service_tcp.tcp8090.name, checkpoint_management_service_tcp.tcp33890.name]
                 enabled = true
