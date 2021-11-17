@@ -16,6 +16,7 @@ resource "checkpoint_management_access_layer" "AWS_Perimeter_URLF" {
   applications_and_url_filtering = true
   firewall =true
   color = "blue"
+  shared = true
 }
 
 resource "checkpoint_management_access_rule" "blockrule1" {
