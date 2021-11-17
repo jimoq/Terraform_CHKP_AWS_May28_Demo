@@ -8,6 +8,7 @@
                 enabled = true
                 name = "Jump Host Rule"
                 source = [ checkpoint_management_dns_domain.jumphost.name]
+                destination = "Any"
                 service = ["ssh", "https"]
                 action = "Accept"
                 layer = "${checkpoint_management_package.AWS_Perimeter.name} Network"
@@ -42,6 +43,7 @@
                 enabled = true
                 name = "Outbound Rule"
                 source = [ checkpoint_management_network.vpc_local.name]
+                destination = "Any"
                 service = ["ssh", "https", "dns", "http", "ntp", "icmp-proto", "ftp"]
                 action = "Apply Layer"
                 inline_layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name

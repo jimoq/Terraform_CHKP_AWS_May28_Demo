@@ -22,6 +22,8 @@ resource "checkpoint_management_access_rule" "blockrule1" {
                 name = "Block Categories"
                 enabled = true
                 action = "Drop"
+                source = "Any"
+                destination = "Any"
                 service = [ checkpoint_management_application_site.blocksite1.name ]
                 layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
                 track = {
@@ -44,6 +46,7 @@ resource "checkpoint_management_access_rule" "allowrule2" {
                 action_settings = {
                   enable_identity_captive_portal = false
                   }
+                source = "Any"
                 destination = ["All_Internet"]
                 service = [ "Low Risk", "Very Low Risk", "Medium Risk" ]
                 layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
@@ -67,7 +70,9 @@ resource "checkpoint_management_access_rule" "allowrule3" {
                 action_settings = {
                   enable_identity_captive_portal = false
                   }
+                source = "Any"
                 destination = ["All_Internet"]
+                service = "Any"
                 layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
                 track = {
                   accounting = true
