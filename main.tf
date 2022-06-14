@@ -11,19 +11,41 @@ provider "checkpoint" {
   # Configuration options
 }
 
-variable "policy_install" {
-  type    = bool
-  default = false
-  description = "Set to true to install policy"
-}
+
 
 module "policy" {
   source = "./policy"
 }
 
-resource "checkpoint_management_publish" "publish" { 
+// Example 1 - Trigger the publish resource every time there is a change on any of the configuration files in a specific module
+// Expression to use to hash all files in directory policy that is used by the policy module
+locals {
+  publish_triggers = [for filename in fileset(path.module, "policy/*.tf"): filesha256(filename)]
+}
+
+// Triggers publish if any of the hashes of the files in the policy directory changed.
+resource "checkpoint_management_publish" "publish" {
   depends_on = [ module.policy ]
-  }
+  triggers = local.publish_triggers
+}
+
+//Example 2 - Trigger the publish resource if version number is changed 
+// Set the publish version number (this expression can be improved and made more intelligent)
+#locals {
+#  publish_version = [1]
+#}
+
+// Triggers publish if version number in publish changes
+#resource "checkpoint_management_publish" "publish" {
+#  depends_on = [ module.policy ]
+#  triggers = local.publish_version
+#}
+
+variable "policy_install" {
+  type    = bool
+  default = false
+  description = "Set to true to install policy"
+}
 
 resource "null_resource" "installpolicy" {
   count = var.policy_install ? 1: 0
