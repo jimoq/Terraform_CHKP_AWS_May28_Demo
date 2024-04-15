@@ -16,7 +16,7 @@
                   enable_identity_captive_portal = false
                   }
                 track = {
-                  accounting = true
+                  accounting = false
 	            alert = "none"
                   enable_firewall_session = true
                   per_connection = true
@@ -38,7 +38,7 @@
                   enable_identity_captive_portal = false
                   }
                 track = {
-                  accounting = true
+                  accounting = false
 	            alert = "none"
                   enable_firewall_session = true
                   per_connection = true
@@ -60,7 +60,7 @@
                   enable_identity_captive_portal = false
                   }
                 track = {
-                  accounting = true
+                  accounting = false
 	            alert = "none"
                   enable_firewall_session = true
                   per_connection = true
@@ -82,7 +82,7 @@
                   enable_identity_captive_portal = false
                   }
                 track = {
-                  accounting = true
+                  accounting = false
 	            alert = "none"
                   enable_firewall_session = true
                   per_connection = true

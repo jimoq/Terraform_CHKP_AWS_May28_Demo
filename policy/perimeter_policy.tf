@@ -28,7 +28,7 @@ resource "checkpoint_management_access_rule" "blockrule1" {
                 service = [ checkpoint_management_application_site.blocksite1.name ]
                 layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
                 track = {
-                  accounting = true
+                  accounting = false
 	                alert = "none"
                   enable_firewall_session = true
                   per_connection = true
@@ -52,7 +52,7 @@ resource "checkpoint_management_access_rule" "allowrule2" {
                 service = [ "Low Risk", "Very Low Risk", "Medium Risk" ]
                 layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
                 track = {
-                  accounting = true
+                  accounting = false
 	                alert = "none"
                   enable_firewall_session = true
                   per_connection = true
@@ -76,7 +76,7 @@ resource "checkpoint_management_access_rule" "allowrule3" {
                 service = [ "Any" ]
                 layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
                 track = {
-                  accounting = true
+                  accounting = false
 	                alert = "none"
                   enable_firewall_session = true
                   per_connection = true

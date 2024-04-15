@@ -16,7 +16,7 @@
                   enable_identity_captive_portal = false
                   }
                 track = {
-                  accounting = true
+                  accounting = false
 	                alert = "none"
                   enable_firewall_session = true
                   per_connection = true
@@ -49,7 +49,7 @@
                 inline_layer = checkpoint_management_access_layer.AWS_Perimeter_URLF.name
                 layer = "${checkpoint_management_package.AWS_Perimeter.name} Network"
                 track = {
-                  accounting = true
+                  accounting = false
 	                alert = "none"
                   enable_firewall_session = true
                   per_connection = true

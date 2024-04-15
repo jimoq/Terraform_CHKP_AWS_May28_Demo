@@ -2,7 +2,7 @@ terraform {
    required_providers {
      checkpoint = {
        source = "checkpointsw/checkpoint"
-       version = "~> 1.1.0"
+#       version = "~> 1.1.0"
      }
    }
 }
@@ -27,6 +27,7 @@ locals {
 resource "checkpoint_management_publish" "publish" {
   depends_on = [ module.policy ]
   triggers = local.publish_triggers
+  run_publish_on_destroy = true
 }
 
 //Example 2 - Trigger the publish resource if version number is changed 
